@@ -47,4 +47,14 @@ define Device/ubnt_edgerouter-lite
 endef
 TARGET_DEVICES += ubnt_edgerouter-lite
 
+#need to change mtdparts
+SBXNWDE-100-2_CMDLINE:=-mtdparts=phys_mapped_flash:640k(boot0)ro,640k(boot1)ro,64k(eeprom)ro root=/dev/mmcblk0p2 rootfstype=squashfs,ext4 rootwait
+define Device/checkpoint-sbxnwde-100-2
+  DEVICE_VENDOR := CheckPoint
+  DEVICE_MODEL := SBXNWDE-100-2
+  BOARD_NAME := sbxnwde-100-2
+  CMDLINE := $(SBXNWDE-100-2_CMDLINE)
+endef
+TARGET_DEVICES += checkpoint_sbxnwde-100-2
+
 $(eval $(call BuildImage))
